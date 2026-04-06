@@ -5,23 +5,47 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
+    # 🔹 Stage 1: Checkout
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    # 🔹 Stage 2: Setup Node
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
 
-    - name: Install Dependencies
+    # 🔹 Stage 3: Restore (Install dependencies)
+    - name: Restore Dependencies (npm install)
       run: npm install
 
-    - name: Run App Test (Optional)
-      run: echo "No tests yet"
+    # 🔹 Stage 4: Build
+    - name: Build Application
+      run: |
+        echo "Building application..."
+        # Example if using TypeScript:
+        # npm run build
 
-    - name: Deployment Step
-      run: echo "Deploying app..."
+    # 🔹 Stage 5: Test
+    - name: Run Tests
+      run: |
+        echo "Running tests..."
+        # Example:
+        # npm test
+
+    # 🔹 Stage 6: Publish Artifacts
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: node-app-artifact
+        path: |
+          .
+          !node_modules
+
+    # 🔹 Stage 7: Deploy
+    - name: Deploy Step
+      run: echo "Deploying application..."
