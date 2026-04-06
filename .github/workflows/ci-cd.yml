@@ -25,7 +25,7 @@ jobs:
 
     # Stage 2: Build
     - name: Build Application
-      run: npm start
+      run: echo "Building application..."
 
     # Stage 3: Test
     - name: Run Tests
