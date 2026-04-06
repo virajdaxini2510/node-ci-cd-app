@@ -9,25 +9,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 🔹 Stage 1: Restore (Install dependencies)
+    # Step 1: Checkout Code (FIX)
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step 2: Setup Node.js (FIX)
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    # Stage 1: Restore
     - name: Restore Dependencies (npm install)
       run: npm install
 
-    # 🔹 Stage 2: Build
+    # Stage 2: Build
     - name: Build Application
-      run: |
-        echo "Building application..."
-        # Example if using TypeScript:
-        # npm run build
+      run: echo "Building application..."
 
-    # 🔹 Stage 3: Test
+    # Stage 3: Test
     - name: Run Tests
-      run: |
-        echo "Running tests..."
-        # Example:
-        # npm test
+      run: echo "Running tests..."
 
-    # 🔹 Stage 4: Publish Artifacts
+    # Stage 4: Publish Artifacts
     - name: Publish Artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -36,6 +40,6 @@ jobs:
           .
           !node_modules
 
-    # 🔹 Stage 7: Deploy
+    # 🔹 Stage 5: Deploy
     - name: Deploy Step
       run: echo "Deploying application..."
