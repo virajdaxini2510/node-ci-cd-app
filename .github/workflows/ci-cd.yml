@@ -39,7 +39,7 @@ jobs:
 
     # 🔹 Stage 6: Publish Artifacts
     - name: Publish Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: node-app-artifact
         path: |
