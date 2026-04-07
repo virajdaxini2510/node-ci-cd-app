@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
     res.send('CI/CD Node.js App is Running!');
 });
 
+app.get('/home', (req, res) => {
+    res.send('CI/CD Node.js App is Running from Home!');
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
